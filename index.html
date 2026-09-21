@@ -6,7 +6,11 @@
   <meta name="description" content="CYBEREXTRA ⌬ | Acervo interativo de laboratórios independentes de Blue Team, Red Team controlado, detecção, resposta e análise de vulnerabilidades.">
   <meta name="theme-color" content="#07110f">
   <title>CYBEREXTRA ⌬ | Blue + Red Security Lab</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css">
+  <link rel="stylesheet" href="print.css">
 </head>
 <body>
   <div class="grid-noise" aria-hidden="true"></div>
@@ -24,6 +28,14 @@
       <button class="ghost-button" id="themeToggle" type="button" aria-label="Alternar contraste">◐</button>
     </div>
   </header>
+
+  <div class="utility-strip" aria-label="Ferramentas do laboratório">
+    <input class="utility-search" id="moduleSearch" type="search" placeholder="Buscar laboratório, domínio ou técnica..." aria-label="Buscar módulos">
+    <button class="utility-button" id="commandTrigger" type="button">⌘ Command <span aria-hidden="true">Ctrl K</span></button>
+    <button class="utility-button" id="selfTest" type="button">Self test</button>
+    <button class="utility-button" id="exportReport" type="button">Exportar relatório</button>
+    <span class="self-test-result" id="selfTestResult">SELF TEST --</span>
+  </div>
 
   <main id="top">
     <section class="hero">
@@ -62,6 +74,10 @@
       <article><strong id="metricFindings">30</strong><span>achados simulados</span></article>
       <article><strong>0</strong><span>alvos externos</span></article>
       <article><strong>100%</strong><span>client-side</span></article>
+    </section>
+
+    <section class="scorecard" aria-label="Cobertura do portfólio">
+      <div class="scorecard-grid" id="scorecardGrid"></div>
     </section>
 
     <section class="section" id="arsenal">
@@ -222,6 +238,13 @@
     </div>
   </div>
 
+  <div class="command-palette" id="commandPalette" aria-hidden="true">
+    <div class="command-box" role="dialog" aria-modal="true" aria-label="Command palette">
+      <input id="commandInput" type="search" autocomplete="off" placeholder="Digite um comando ou laboratório...">
+      <div class="command-results" id="commandResults"></div>
+    </div>
+  </div>
+
   <footer>
     <span>CYBEREXTRA ⌬</span>
     <p>Ambiente de estudo local com dados sintéticos. Nenhum módulo executa ataque contra terceiros.</p>
@@ -229,5 +252,11 @@
   </footer>
 
   <script src="app.js"></script>
+  <script src="js/preferences.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/command-palette.js"></script>
+  <script src="js/scorecard.js"></script>
+  <script src="js/report.js"></script>
+  <script src="js/self-test.js"></script>
 </body>
 </html>
