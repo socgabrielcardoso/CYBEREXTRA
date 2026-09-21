@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CYBEREXTRA ⌬ — acervo interativo de laboratórios independentes de Blue Team, Red Team controlado, detecção, resposta e análise de vulnerabilidades.">
+  <meta name="description" content="CYBEREXTRA ⌬ | Acervo interativo de laboratórios independentes de Blue Team, Red Team controlado, detecção, resposta e análise de vulnerabilidades.">
   <meta name="theme-color" content="#07110f">
   <title>CYBEREXTRA ⌬ | Blue + Red Security Lab</title>
   <link rel="stylesheet" href="styles.css">
@@ -58,8 +58,8 @@
     </section>
 
     <section class="metrics" aria-label="Resumo do laboratório">
-      <article><strong id="metricModules">7</strong><span>módulos</span></article>
-      <article><strong id="metricFindings">21</strong><span>achados simulados</span></article>
+      <article><strong id="metricModules">10</strong><span>módulos</span></article>
+      <article><strong id="metricFindings">30</strong><span>achados simulados</span></article>
       <article><strong>0</strong><span>alvos externos</span></article>
       <article><strong>100%</strong><span>client-side</span></article>
     </section>
@@ -155,6 +155,39 @@
           <p>Dissecação de e-mails fictícios com indicadores de engenharia social, domínio e urgência.</p>
           <div class="module-meta"><span>EMAIL</span><span>SOC</span><span>AWARENESS</span></div>
           <button class="module-open" data-open="phish" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="blue purple" data-module="endpoint">
+          <div class="module-top">
+            <span class="module-icon">⊙</span>
+            <span class="tag blue">BLUE</span>
+          </div>
+          <h3>Endpoint Lens</h3>
+          <p>Forense de endpoint sintético com árvore de processos, persistência e sinais de comportamento suspeito.</p>
+          <div class="module-meta"><span>EDR</span><span>DFIR</span><span>PROCESS TREE</span></div>
+          <button class="module-open" data-open="endpoint" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="red blue purple" data-module="cloud">
+          <div class="module-top">
+            <span class="module-icon">☁</span>
+            <span class="tag purple">PURPLE</span>
+          </div>
+          <h3>Cloud Exposure Lab</h3>
+          <p>Misconfigurations fictícias de storage, identidade e rede com análise de impacto e hardening.</p>
+          <div class="module-meta"><span>CLOUD</span><span>IAM</span><span>HARDENING</span></div>
+          <button class="module-open" data-open="cloud" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="blue purple" data-module="vuln">
+          <div class="module-top">
+            <span class="module-icon">◆</span>
+            <span class="tag blue">BLUE</span>
+          </div>
+          <h3>Vuln Prioritizer</h3>
+          <p>Priorização de vulnerabilidades por criticidade, exposição, exploração conhecida e contexto do ativo.</p>
+          <div class="module-meta"><span>VM</span><span>RISK</span><span>REMEDIATION</span></div>
+          <button class="module-open" data-open="vuln" type="button">Abrir sistema <span>↗</span></button>
         </article>
       </div>
     </section>
