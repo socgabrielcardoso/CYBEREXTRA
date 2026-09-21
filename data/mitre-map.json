@@ -1,0 +1,37 @@
+{
+  "schema": "cyberextra-mitre-map/v1",
+  "techniques": [
+    {
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "labs": [
+        "Sentinel Forge",
+        "Endpoint Lens"
+      ]
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "labs": [
+        "Sentinel Forge",
+        "Packet Watch"
+      ]
+    },
+    {
+      "id": "T1021",
+      "name": "Remote Services",
+      "labs": [
+        "Identity Rift",
+        "Sentinel Forge"
+      ]
+    },
+    {
+      "id": "T1098",
+      "name": "Account Manipulation",
+      "labs": [
+        "Identity Rift"
+      ]
+    }
+  ],
+  "note": "Technique references are educational mappings for synthetic scenarios."
+}
