@@ -350,6 +350,47 @@ password="Summer2026!"</textarea>
     bind(){
       document.querySelector("#vulnAnalyze").onclick=()=>document.querySelector("#vulnResult").textContent="P0 → CVE-DEMO-002\nMotivo: exploração conhecida + exposição externa + ativo de borda.\n\nP1 → CVE-DEMO-003\nMotivo: exploitability relevante apesar de CVSS menor.\n\nP2 → CVE-DEMO-001\nMotivo: severidade alta, porém sem exposição nem exploração observada no cenário.";
     }
+  },
+  yara:{
+    title:"YARA Forge",
+    render:()=>`
+      <div class="lab-layout">
+        <section class="lab-main">
+          <h3 class="lab-title">YARA Pattern Workshop</h3>
+          <p class="lab-subtitle">Monte uma regra didática e valide correspondência apenas contra texto sintético local.</p>
+          <div class="panel">
+            <label class="field-label" for="yaraNeedle">String de interesse</label>
+            <input class="lab-input" id="yaraNeedle" value="demo_marker">
+            <label class="field-label" for="yaraSample" style="margin-top:14px">Amostra sintética</label>
+            <textarea class="lab-textarea" id="yaraSample">header=LAB
+payload=demo_marker
+status=synthetic</textarea>
+            <button class="lab-button" id="yaraRun">Compilar lógica local</button>
+            <div class="result" id="yaraResult">Nenhum arquivo real é lido por este laboratório.</div>
+          </div>
+        </section>
+        <aside class="lab-side">
+          <div class="panel"><h4>Regra gerada</h4><div class="result" id="yaraRule">rule cyberextra_demo {
+  strings:
+    $marker = "demo_marker"
+  condition:
+    $marker
+}</div></div>
+          <div class="panel"><h4>Boas práticas</h4><div class="finding-list"><div class="finding"><strong>Contexto</strong><small>evite string genérica sem significado</small></div><div class="finding"><strong>Precisão</strong><small>combine sinais para reduzir falso positivo</small></div><div class="finding"><strong>Teste</strong><small>valide em corpus autorizado</small></div></div></div>
+        </aside>
+      </div>`,
+    bind(){
+      const esc=v=>v.replace(/["\\]/g,m=>"\\"+m);
+      document.querySelector("#yaraRun").onclick=()=>{
+        const needle=document.querySelector("#yaraNeedle").value.trim();
+        const sample=document.querySelector("#yaraSample").value;
+        if(!needle){document.querySelector("#yaraResult").textContent="Informe uma string didática.";return}
+        document.querySelector("#yaraRule").textContent='rule cyberextra_demo {\n  strings:\n    $marker = "'+esc(needle)+'"\n  condition:\n    $marker\n}';
+        document.querySelector("#yaraResult").textContent=sample.includes(needle)
+          ?"MATCH LOCAL // a amostra sintética contém o marcador informado.\nPróximo passo: adicionar contexto antes de promover uma regra para produção."
+          :"NO MATCH // o marcador não aparece na amostra sintética.";
+      };
+    }
   }
 };
 
