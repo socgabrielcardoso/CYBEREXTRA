@@ -1,0 +1,12 @@
+@media print{
+  .topbar,.hero-actions,.filters,.module-open,.workspace,.utility-strip,.command-palette,.toast{display:none!important}
+  body{background:#fff!important;color:#111!important}
+  .grid-noise{display:none}
+  .hero{min-height:auto;display:block;padding:20px 0}
+  .hero h1,.hero p,.section h2,.module-card h3{color:#111!important;text-shadow:none!important}
+  .hero-console{display:none}
+  .metrics,.module-grid,.scorecard-grid{display:grid;grid-template-columns:repeat(2,1fr)}
+  .module-card,.metrics article,.scorecard-card{background:#fff!important;border:1px solid #ccc!important;box-shadow:none!important;break-inside:avoid}
+  .module-card p,.module-meta span,.metrics span,.scorecard-card span{color:#444!important}
+  footer{color:#333!important}
+}
