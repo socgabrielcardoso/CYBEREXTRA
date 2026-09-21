@@ -1,0 +1,22 @@
+{
+  "schema": "cyberextra-lab-catalog/v1",
+  "philosophy": "Independent browser labs using synthetic data only.",
+  "domains": [
+    "SOC",
+    "AppSec",
+    "IAM",
+    "Network",
+    "Threat Intel",
+    "Secrets",
+    "Email Security",
+    "DFIR",
+    "Cloud Security",
+    "Vulnerability Management"
+  ],
+  "guarantees": [
+    "no external attack execution",
+    "no real credentials",
+    "no backend dependency",
+    "local browser simulation"
+  ]
+}
