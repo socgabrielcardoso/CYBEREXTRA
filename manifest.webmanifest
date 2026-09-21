@@ -1,0 +1,17 @@
+{
+  "name": "CYBEREXTRA Security Lab",
+  "short_name": "CYBEREXTRA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#050a09",
+  "theme_color": "#07110f",
+  "description": "Interactive Blue, Red and Purple Team cybersecurity laboratory.",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
