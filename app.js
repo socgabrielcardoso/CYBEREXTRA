@@ -391,6 +391,57 @@ status=synthetic</textarea>
           :"NO MATCH // o marcador não aparece na amostra sintética.";
       };
     }
+  },
+  detection:{
+    title:"Detection Rule Studio",
+    render:()=>`
+      <div class="lab-layout">
+        <section class="lab-main">
+          <h3 class="lab-title">Detection Engineering Studio</h3>
+          <p class="lab-subtitle">Teste lógica de detecção contra eventos sintéticos e avalie precisão antes de promover uma regra.</p>
+          <div class="panel">
+            <label class="field-label" for="detectType">Hipótese</label>
+            <select class="lab-select" id="detectType">
+              <option value="encoded">PowerShell com argumento codificado</option>
+              <option value="admin">Login privilegiado fora da janela</option>
+              <option value="lolbin">Processo LOLBin com filho incomum</option>
+            </select>
+            <button class="lab-button" id="detectRun">Executar regra</button>
+            <div class="result" id="detectResult">Aguardando teste contra dataset sintético.</div>
+          </div>
+          <div class="panel">
+            <h4>Eventos de teste</h4>
+            <div class="table-wrap">
+              <table class="lab-table">
+                <thead><tr><th>ID</th><th>Evento</th><th>Esperado</th></tr></thead>
+                <tbody>
+                  <tr><td>EVT-101</td><td>powershell.exe -EncodedCommand DEMO</td><td>alerta</td></tr>
+                  <tr><td>EVT-102</td><td>powershell.exe Get-Process</td><td>normal</td></tr>
+                  <tr><td>EVT-103</td><td>admin login 02:14</td><td>alerta</td></tr>
+                  <tr><td>EVT-104</td><td>signed utility normal child</td><td>normal</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <aside class="lab-side">
+          <div class="panel"><h4>Quality gates</h4><div class="risk"><b>True positives</b><span class="sev-low" id="detectTP">--</span></div><div class="risk"><b>False positives</b><span class="sev-medium" id="detectFP">--</span></div><div class="risk"><b>Coverage</b><span class="sev-low">synthetic</span></div></div>
+          <div class="panel"><h4>Engineering loop</h4><div class="killchain"><span>Hypothesis</span><span>Telemetry</span><span>Rule</span><span>Test</span><span>Tune</span></div></div>
+        </aside>
+      </div>`,
+    bind(){
+      const cases={
+        encoded:{tp:1,fp:0,text:"PASS // EVT-101 detectado; EVT-102 ignorado.\nLógica: processo PowerShell + argumento codificado.\nAprimoramento: adicionar contexto de parent process, signer e usuário."},
+        admin:{tp:1,fp:0,text:"PASS // EVT-103 detectado por janela de horário + privilégio.\nAprimoramento: exceções devem ser justificadas, temporárias e auditáveis."},
+        lolbin:{tp:1,fp:1,text:"TUNE // comportamento genérico gerou um falso positivo sintético.\nAprimoramento: correlacionar command line, processo pai, destino e assinatura."}
+      };
+      document.querySelector("#detectRun").onclick=()=>{
+        const r=cases[document.querySelector("#detectType").value];
+        document.querySelector("#detectTP").textContent=r.tp;
+        document.querySelector("#detectFP").textContent=r.fp;
+        document.querySelector("#detectResult").textContent=r.text;
+      };
+    }
   }
 };
 
