@@ -1,0 +1,24 @@
+:root{--focus:#b7ffe0}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.utility-strip{max-width:1360px;margin:18px auto 0;padding:0 24px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.utility-search{min-width:260px;flex:1;background:#07100d;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:12px 14px}
+.utility-button{background:#0a1511;border:1px solid var(--line);color:#b7c9c2;border-radius:12px;padding:11px 14px;cursor:pointer}
+.utility-button:hover{border-color:#3f705f;color:var(--green)}
+.command-palette{position:fixed;inset:0;z-index:140;background:rgba(0,0,0,.72);backdrop-filter:blur(10px);display:none;padding:12vh 20px 20px}
+.command-palette.open{display:block}
+.command-box{max-width:700px;margin:auto;background:#07100d;border:1px solid #315247;border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.command-box input{width:100%;padding:18px;border:0;border-bottom:1px solid var(--line);background:#0a1511;color:var(--text);font-size:1rem;outline:none}
+.command-results{max-height:420px;overflow:auto;padding:8px}
+.command-item{width:100%;display:flex;justify-content:space-between;gap:20px;background:transparent;border:0;color:#9eb4ab;text-align:left;padding:12px;border-radius:10px;cursor:pointer}
+.command-item:hover,.command-item.active{background:#102019;color:var(--green)}
+.command-item small{color:#59786c}
+.scorecard{max-width:1360px;margin:0 auto;padding:0 24px 36px}
+.scorecard-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.scorecard-card{border:1px solid var(--line);background:#08110e;border-radius:14px;padding:18px}
+.scorecard-card strong{display:block;font-size:1.55rem}
+.scorecard-card span{color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+.self-test-result{font:700 .72rem ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+.toast{position:fixed;right:20px;bottom:20px;z-index:160;background:#0b1713;border:1px solid #2b5444;color:#c9ddd5;border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s}
+.toast.show{opacity:1;transform:none}
+@media(max-width:760px){.scorecard-grid{grid-template-columns:1fr 1fr}.utility-search{min-width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
