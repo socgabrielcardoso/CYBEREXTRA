@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CYBEREXTRA ⌬ — acervo interativo de laboratórios independentes de Blue Team, Red Team controlado, detecção, resposta e análise de vulnerabilidades.">
+  <meta name="theme-color" content="#07110f">
+  <title>CYBEREXTRA ⌬ | Blue + Red Security Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grid-noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="CYBEREXTRA início">
+      <span class="brand-mark">⌬</span>
+      <span>
+        <strong>CYBEREXTRA</strong>
+        <small>BLUE + RED SECURITY LAB</small>
+      </span>
+    </a>
+    <div class="topbar-actions">
+      <span class="status-pill"><i></i> LAB LOCAL</span>
+      <button class="ghost-button" id="themeToggle" type="button" aria-label="Alternar contraste">◐</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">PORTFÓLIO CYBERSECURITY // AMBIENTE CONTROLADO</p>
+        <h1>Um acervo de sistemas <span>independentes</span> para investigar, atacar com segurança e defender melhor.</h1>
+        <p class="hero-description">
+          Cada módulo reproduz um problema de segurança em dados fictícios. O lado ofensivo demonstra a lógica da falha sem atingir serviços externos; o lado defensivo mostra sinais, controles e resposta.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#arsenal">Abrir arsenal</a>
+          <button class="secondary-button" type="button" id="runAll">Executar diagnóstico</button>
+        </div>
+        <div class="hero-footnote">
+          <span>sem backend</span><span>sem credenciais reais</span><span>Live Server ready</span>
+        </div>
+      </div>
+
+      <div class="hero-console" aria-label="Console de telemetria">
+        <div class="console-head">
+          <span><b></b><b></b><b></b></span>
+          <code>cyberextra://telemetry</code>
+        </div>
+        <div class="console-body" id="heroConsole" aria-live="polite">
+          <p><span class="prompt">›</span> booting cyberextra core...</p>
+          <p><span class="prompt">›</span> loading defensive telemetry <strong>OK</strong></p>
+          <p><span class="prompt">›</span> offensive simulation sandbox <strong>ARMED</strong></p>
+          <p><span class="prompt">›</span> external target access <em>DISABLED</em></p>
+          <p class="cursor-line"><span class="prompt">›</span> <span class="cursor"></span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Resumo do laboratório">
+      <article><strong id="metricModules">7</strong><span>módulos</span></article>
+      <article><strong id="metricFindings">21</strong><span>achados simulados</span></article>
+      <article><strong>0</strong><span>alvos externos</span></article>
+      <article><strong>100%</strong><span>client-side</span></article>
+    </section>
+
+    <section class="section" id="arsenal">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ARSENAL</p>
+          <h2>Sistemas independentes</h2>
+          <p>Escolha um laboratório. Não existe dependência entre módulos.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filtrar módulos">
+          <button class="filter active" data-filter="all" type="button">Todos</button>
+          <button class="filter" data-filter="blue" type="button">Blue</button>
+          <button class="filter" data-filter="red" type="button">Red</button>
+          <button class="filter" data-filter="purple" type="button">Purple</button>
+        </div>
+      </div>
+
+      <div class="module-grid" id="moduleGrid">
+        <article class="module-card" data-team="blue purple" data-module="soc">
+          <div class="module-top">
+            <span class="module-icon">◉</span>
+            <span class="tag blue">BLUE</span>
+          </div>
+          <h3>Sentinel Forge</h3>
+          <p>Triage de eventos, score de risco, correlação e playbook de resposta para um SOC fictício.</p>
+          <div class="module-meta"><span>SIEM</span><span>IR</span><span>MITRE</span></div>
+          <button class="module-open" data-open="soc" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="red purple" data-module="web">
+          <div class="module-top">
+            <span class="module-icon">&lt;/&gt;</span>
+            <span class="tag red">RED</span>
+          </div>
+          <h3>Web Breach Lab</h3>
+          <p>Simulador local de XSS, SQLi, traversal, IDOR e validação de controles sem disparar requisições ofensivas.</p>
+          <div class="module-meta"><span>OWASP</span><span>APPSEC</span><span>SAFE LAB</span></div>
+          <button class="module-open" data-open="web" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="red blue purple" data-module="identity">
+          <div class="module-top">
+            <span class="module-icon">⌁</span>
+            <span class="tag purple">PURPLE</span>
+          </div>
+          <h3>Identity Rift</h3>
+          <p>Analisa privilégios, MFA, contas de serviço e caminhos de abuso em um diretório corporativo fictício.</p>
+          <div class="module-meta"><span>IAM</span><span>AD</span><span>MFA</span></div>
+          <button class="module-open" data-open="identity" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="blue purple" data-module="network">
+          <div class="module-top">
+            <span class="module-icon">⌇</span>
+            <span class="tag blue">BLUE</span>
+          </div>
+          <h3>Packet Watch</h3>
+          <p>Fluxos de rede sintéticos com hunting de beaconing, TOR, scans e tráfego fora do padrão.</p>
+          <div class="module-meta"><span>NDR</span><span>NETFLOW</span><span>HUNTING</span></div>
+          <button class="module-open" data-open="network" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="blue" data-module="intel">
+          <div class="module-top">
+            <span class="module-icon">◇</span>
+            <span class="tag blue">BLUE</span>
+          </div>
+          <h3>IOC Observatory</h3>
+          <p>Enriquece indicadores fictícios, classifica reputação e relaciona evidências de campanha.</p>
+          <div class="module-meta"><span>CTI</span><span>IOC</span><span>OSINT</span></div>
+          <button class="module-open" data-open="intel" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="red blue purple" data-module="secrets">
+          <div class="module-top">
+            <span class="module-icon">✦</span>
+            <span class="tag purple">PURPLE</span>
+          </div>
+          <h3>Secret Scope</h3>
+          <p>Scanner de texto local para detectar padrões de tokens, senhas, chaves e exposição acidental.</p>
+          <div class="module-meta"><span>SECRETS</span><span>SDLC</span><span>DLP</span></div>
+          <button class="module-open" data-open="secrets" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+
+        <article class="module-card" data-team="red blue purple" data-module="phish">
+          <div class="module-top">
+            <span class="module-icon">△</span>
+            <span class="tag purple">PURPLE</span>
+          </div>
+          <h3>Phish Autopsy</h3>
+          <p>Dissecação de e-mails fictícios com indicadores de engenharia social, domínio e urgência.</p>
+          <div class="module-meta"><span>EMAIL</span><span>SOC</span><span>AWARENESS</span></div>
+          <button class="module-open" data-open="phish" type="button">Abrir sistema <span>↗</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section matrix-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PURPLE TEAM LOOP</p>
+          <h2>Da falha ao controle</h2>
+        </div>
+      </div>
+      <div class="loop">
+        <div><span>01</span><strong>Hipótese</strong><small>O que pode dar errado?</small></div>
+        <div><span>02</span><strong>Simulação</strong><small>Como a falha se manifesta?</small></div>
+        <div><span>03</span><strong>Telemetria</strong><small>Que rastro ela deixa?</small></div>
+        <div><span>04</span><strong>Detecção</strong><small>Como identificar cedo?</small></div>
+        <div><span>05</span><strong>Mitigação</strong><small>Como cortar o caminho?</small></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="workspace" id="workspace" aria-hidden="true">
+    <div class="workspace-shell">
+      <div class="workspace-bar">
+        <div>
+          <span class="workspace-kicker">CYBEREXTRA ⌬ / LAB</span>
+          <h2 id="workspaceTitle">Sistema</h2>
+        </div>
+        <button class="workspace-close" id="workspaceClose" type="button" aria-label="Fechar módulo">×</button>
+      </div>
+      <div id="workspaceContent"></div>
+    </div>
+  </div>
+
+  <footer>
+    <span>CYBEREXTRA ⌬</span>
+    <p>Ambiente de estudo local com dados sintéticos. Nenhum módulo executa ataque contra terceiros.</p>
+    <span id="year"></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
