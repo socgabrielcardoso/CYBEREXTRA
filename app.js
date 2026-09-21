@@ -264,6 +264,92 @@ password="Summer2026!"</textarea>
       };
       document.querySelector("#phishAnalyze").onclick=()=>document.querySelector("#phishResult").textContent=d[document.querySelector("#phishSample").value];
     }
+  },
+  endpoint:{
+    title:"Endpoint Lens",
+    render:()=>`
+      <div class="lab-layout">
+        <section class="lab-main">
+          <h3 class="lab-title">Endpoint Forensics</h3>
+          <p class="lab-subtitle">Árvore de processos e persistência em um host completamente fictício.</p>
+          <div class="panel">
+            <h4>Process tree</h4>
+            <div class="finding-list">
+              <div class="finding"><strong>explorer.exe</strong><small>PID 2140 • usuário analyst</small></div>
+              <div class="finding"><strong>↳ powershell.exe</strong><small>PID 4812 • argumento codificado</small></div>
+              <div class="finding"><strong>↳ rundll32.exe</strong><small>PID 5104 • child process incomum</small></div>
+            </div>
+          </div>
+          <button class="lab-button" id="endpointAnalyze">Correlacionar comportamento</button>
+          <div class="result" id="endpointResult">Aguardando correlação.</div>
+        </section>
+        <aside class="lab-side">
+          <div class="panel"><h4>Telemetry</h4><div class="risk"><b>Process create</b><span class="sev-low">ON</span></div><div class="risk"><b>Network</b><span class="sev-low">ON</span></div><div class="risk"><b>Registry</b><span class="sev-low">ON</span></div><div class="risk"><b>Script block</b><span class="sev-medium">PARTIAL</span></div></div>
+          <div class="panel"><h4>DFIR flow</h4><div class="killchain"><span>Scope</span><span>Collect</span><span>Timeline</span><span>Contain</span><span>Recover</span></div></div>
+        </aside>
+      </div>`,
+    bind(){
+      document.querySelector("#endpointAnalyze").onclick=()=>document.querySelector("#endpointResult").textContent="RISCO ALTO // encadeamento de interpretador + processo LOLBin + argumento ofuscado.\nNão é veredito isolado. Validar command line, assinatura, usuário, destino de rede e persistência antes da contenção.";
+    }
+  },
+  cloud:{
+    title:"Cloud Exposure Lab",
+    render:()=>`
+      <div class="lab-layout">
+        <section class="lab-main">
+          <h3 class="lab-title">Cloud Misconfiguration Review</h3>
+          <p class="lab-subtitle">Escolha uma falha fictícia e veja o caminho de exposição e o controle esperado.</p>
+          <div class="panel">
+            <label class="field-label" for="cloudCase">Cenário</label>
+            <select class="lab-select" id="cloudCase">
+              <option value="storage">Storage com leitura pública</option>
+              <option value="role">Role com privilégio excessivo</option>
+              <option value="sg">Regra de rede 0.0.0.0/0 administrativa</option>
+            </select>
+            <button class="lab-button" id="cloudAnalyze">Avaliar exposição</button>
+            <div class="result" id="cloudResult">Ambiente sintético. Nenhum provedor é consultado.</div>
+          </div>
+        </section>
+        <aside class="lab-side">
+          <div class="panel"><h4>Guardrails</h4><div class="finding-list"><div class="finding"><strong>Least privilege</strong><small>identidade e escopo mínimos</small></div><div class="finding"><strong>Private by default</strong><small>dados e serviços não públicos</small></div><div class="finding"><strong>Continuous posture</strong><small>detectar drift de configuração</small></div></div></div>
+        </aside>
+      </div>`,
+    bind(){
+      const c={
+        storage:"CRÍTICO // leitura pública pode expor dados sem autenticação.\nRed: confirmar a condição somente em ambiente autorizado.\nBlue: remover acesso público, revisar logs e classificar objetos potencialmente expostos.",
+        role:"ALTO // role ampla aumenta blast radius caso a identidade seja comprometida.\nRed: mapear permissões efetivas no lab.\nBlue: reduzir ações e recursos, aplicar JIT e monitorar elevação.",
+        sg:"CRÍTICO // porta administrativa aberta globalmente amplia superfície de ataque.\nRed: validar apenas a regra no lab, sem scan externo.\nBlue: limitar origem, usar bastion/VPN e registrar mudanças."
+      };
+      document.querySelector("#cloudAnalyze").onclick=()=>document.querySelector("#cloudResult").textContent=c[document.querySelector("#cloudCase").value];
+    }
+  },
+  vuln:{
+    title:"Vuln Prioritizer",
+    render:()=>`
+      <div class="lab-layout">
+        <section class="lab-main">
+          <h3 class="lab-title">Risk Based Vulnerability Management</h3>
+          <p class="lab-subtitle">CVSS sozinho não manda na fila. Contexto do ativo muda a prioridade.</p>
+          <div class="table-wrap panel">
+            <table class="lab-table">
+              <thead><tr><th>ID</th><th>CVSS</th><th>Exposto</th><th>Exploração</th><th>Ativo</th><th>Prioridade</th></tr></thead>
+              <tbody>
+                <tr><td>CVE-DEMO-001</td><td>9.8</td><td>não</td><td>não</td><td>lab-server</td><td><span class="sev-medium">P2</span></td></tr>
+                <tr><td>CVE-DEMO-002</td><td>8.1</td><td>sim</td><td>sim</td><td>edge-demo</td><td><span class="sev-critical">P0</span></td></tr>
+                <tr><td>CVE-DEMO-003</td><td>6.5</td><td>não</td><td>sim</td><td>workstation</td><td><span class="sev-high">P1</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="lab-button" id="vulnAnalyze">Explicar prioridade</button>
+          <div class="result" id="vulnResult">Aguardando cálculo de contexto.</div>
+        </section>
+        <aside class="lab-side">
+          <div class="panel"><h4>Fatores</h4><div class="risk"><b>Severity</b><span class="sev-low">CVSS</span></div><div class="risk"><b>Exploitability</b><span class="sev-high">EPSS/KEV</span></div><div class="risk"><b>Exposure</b><span class="sev-high">internet</span></div><div class="risk"><b>Asset value</b><span class="sev-medium">context</span></div></div>
+        </aside>
+      </div>`,
+    bind(){
+      document.querySelector("#vulnAnalyze").onclick=()=>document.querySelector("#vulnResult").textContent="P0 → CVE-DEMO-002\nMotivo: exploração conhecida + exposição externa + ativo de borda.\n\nP1 → CVE-DEMO-003\nMotivo: exploitability relevante apesar de CVSS menor.\n\nP2 → CVE-DEMO-001\nMotivo: severidade alta, porém sem exposição nem exploração observada no cenário.";
+    }
   }
 };
 
