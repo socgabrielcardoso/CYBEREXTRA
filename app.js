@@ -442,6 +442,60 @@ status=synthetic</textarea>
         document.querySelector("#detectResult").textContent=r.text;
       };
     }
+  },
+  threatmodel:{
+    title:"Threat Model Canvas",
+    render:()=>`
+      <div class="lab-layout">
+        <section class="lab-main">
+          <h3 class="lab-title">STRIDE Threat Model Canvas</h3>
+          <p class="lab-subtitle">Modele ameaças de uma arquitetura fictícia e converta risco em controle verificável.</p>
+          <div class="panel">
+            <label class="field-label" for="tmAsset">Componente</label>
+            <select class="lab-select" id="tmAsset">
+              <option value="portal">Portal web interno</option>
+              <option value="api">API de integração</option>
+              <option value="identity">Camada de identidade</option>
+              <option value="storage">Storage de documentos</option>
+            </select>
+            <label class="field-label" for="tmStride" style="margin-top:14px">Categoria STRIDE</label>
+            <select class="lab-select" id="tmStride">
+              <option value="spoofing">Spoofing</option>
+              <option value="tampering">Tampering</option>
+              <option value="repudiation">Repudiation</option>
+              <option value="information">Information Disclosure</option>
+              <option value="dos">Denial of Service</option>
+              <option value="elevation">Elevation of Privilege</option>
+            </select>
+            <button class="lab-button" id="tmAnalyze">Gerar hipótese</button>
+            <div class="result" id="tmResult">Escolha o componente e a categoria para gerar uma hipótese defensiva.</div>
+          </div>
+          <div class="panel">
+            <h4>Fluxo fictício</h4>
+            <div class="killchain"><span>User</span><span>→</span><span>Identity</span><span>→</span><span>Portal</span><span>→</span><span>API</span><span>→</span><span>Storage</span></div>
+          </div>
+        </section>
+        <aside class="lab-side">
+          <div class="panel"><h4>Trust boundaries</h4><div class="finding-list"><div class="finding"><strong>Browser ↔ Portal</strong><small>entrada não confiável</small></div><div class="finding"><strong>Portal ↔ API</strong><small>identidade de workload</small></div><div class="finding"><strong>API ↔ Storage</strong><small>autorização por recurso</small></div></div></div>
+          <div class="panel"><h4>Definition of done</h4><p style="color:var(--muted);font-size:.82rem">Uma ameaça só sai do canvas quando existe controle, dono, evidência de teste e risco residual documentado.</p></div>
+        </aside>
+      </div>`,
+    bind(){
+      const risks={
+        spoofing:["identidade falsa ou sessão indevidamente reutilizada","autenticação forte, validação de token, sessão curta e telemetria de identidade"],
+        tampering:["alteração não autorizada de dados ou requisições","integridade, autorização server-side, assinatura quando aplicável e audit trail"],
+        repudiation:["ação relevante sem evidência suficiente de autoria","logging íntegro, identidade consistente, timestamp e retenção adequada"],
+        information:["exposição de dados além do necessário","classificação, autorização por objeto, minimização, criptografia e DLP"],
+        dos:["exaustão de recurso ou indisponibilidade do serviço","rate limiting, filas, limites de recurso, redundância e observabilidade"],
+        elevation:["identidade obtém privilégio acima do autorizado","least privilege, separação de funções, JIT/JEA e revisão contínua"]
+      };
+      document.querySelector("#tmAnalyze").onclick=()=>{
+        const asset=document.querySelector("#tmAsset").selectedOptions[0].textContent;
+        const key=document.querySelector("#tmStride").value;
+        const [risk,control]=risks[key];
+        document.querySelector("#tmResult").textContent="ASSET // "+asset+"\nHIPÓTESE // "+risk+"\nCONTROLE // "+control+"\nEVIDÊNCIA // teste no ambiente autorizado + logs + revisão de configuração.";
+      };
+    }
   }
 };
 
