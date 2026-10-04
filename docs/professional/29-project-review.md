@@ -1,15 +1,14 @@
-# Project Review
+# Revisão antes do commit
 
-Antes de publicar uma evolução:
-- nenhum segredo versionado;
-- nenhum alvo real;
-- documentação coerente;
-- cenário reproduzível;
-- mitigação incluída;
-- limitações registradas;
-- conteúdo ofensivo contextualizado defensivamente;
-- arquivos e links funcionais;
-- linguagem profissional;
-- histórico de commits descritivo.
+Checar:
 
-Esse padrão mantém o CYBEREXTRA útil como laboratório e portfólio.
+- nenhum segredo no diff;
+- nenhum dado real usado como exemplo;
+- cenário continua reproduzível;
+- mitigação acompanha a falha estudada;
+- links e arquivos existem;
+- exemplos ofensivos continuam limitados ao laboratório;
+- nomes e textos estão claros;
+- não ficou arquivo temporário ou evidência sensível.
+
+Se a alteração muda o comportamento do cenário, atualizar a documentação junto.
