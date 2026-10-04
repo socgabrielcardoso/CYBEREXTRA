@@ -1,17 +1,21 @@
-# Project Profile
+# CYBEREXTRA — notas do projeto
 
-**CYBEREXTRA** is a controlled cybersecurity laboratory that combines defensive analysis with safe offensive simulations using synthetic data and browser-only execution.
+## Finalidade
 
-## What this project demonstrates
-- Blue Team and controlled Red Team reasoning
-- Vulnerability-analysis concepts without external targeting
-- Detection, response and evidence-oriented workflows
-- Secure local execution with synthetic scenarios
-- Portfolio-oriented security visualization
+Ambiente local para exercícios de segurança que misturam visão ofensiva e defensiva sem sair de um cenário controlado.
 
-## Portfolio signal
-The project shows the ability to connect offensive understanding with defensive controls while keeping experimentation isolated and reproducible.
+A proposta é entender como uma falha pode ser explorada em laboratório e, na mesma sequência, registrar como detectar, limitar e corrigir o problema.
 
-**Domain:** Cybersecurity, Blue Team, AppSec, Controlled Red Team  
-**Execution model:** Client-side laboratory  
-**Status:** Active technical portfolio project
+## Características
+
+- execução no navegador;
+- dados sintéticos;
+- cenários de AppSec;
+- exercícios de Blue Team;
+- relatórios e scorecards;
+- documentação de mitigação;
+- sem dependência de alvos externos.
+
+## Regra do projeto
+
+Toda simulação deve ter escopo seguro e autorização. O objetivo é estudar o comportamento da falha e a defesa correspondente, não testar terceiros.
