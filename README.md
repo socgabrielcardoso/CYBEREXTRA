@@ -1,24 +1,34 @@
 # CYBEREXTRA
 
-Laboratório controlado de Cybersecurity para estudo prático de Blue Team, AppSec e simulações ofensivas seguras com dados sintéticos.
+Coleção de exercícios de **Cybersecurity** executados no navegador, com foco em Blue Team, AppSec e simulações controladas.
 
-## Objetivo
-Conectar entendimento de técnicas de ataque com detecção, validação, mitigação e documentação defensiva.
+O projeto foi montado para testar raciocínio de segurança sem depender de infraestrutura externa. Os cenários trabalham com dados sintéticos e servem para analisar falhas, registrar evidências e pensar na contramedida defensiva.
 
-## Princípios
-- somente ambientes próprios ou autorizados;
-- dados sintéticos;
-- sem exploração de terceiros;
-- evidência reproduzível;
-- foco em aprendizado defensivo.
+## O que tem no projeto
 
-## Áreas
-- Blue Team
-- AppSec
-- Threat Modeling
-- Detection Engineering
-- Security Testing
-- Incident Response
-- Controlled Red Team
+- análise de vulnerabilidades em cenários locais
+- exercícios de AppSec e lógica de negócio
+- threat modeling
+- scorecards e relatórios
+- busca e command palette
+- self-test da interface
+- documentação de detecção, mitigação e validação
 
-A documentação profissional em `docs/professional/` registra metodologia, segurança do laboratório e critérios de avaliação.
+## Estrutura
+
+- `index.html` — interface principal
+- `app.js` — lógica central
+- `js/` — módulos de busca, relatório, preferências, scorecard e self-test
+- `data/` — dados usados pelos cenários
+- `docs/` — documentação técnica
+- `assets/` — recursos visuais
+
+## Execução
+
+O projeto roda como aplicação client-side. Pode ser servido localmente com qualquer servidor estático.
+
+## Uso responsável
+
+Os exemplos existem para estudo em ambiente controlado. Não há justificativa para apontar este projeto contra sistemas de terceiros sem autorização.
+
+Dados reais, tokens, cookies, credenciais e informações corporativas não devem ser adicionados ao repositório.
