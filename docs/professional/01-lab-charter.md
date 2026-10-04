@@ -1,17 +1,21 @@
-# Lab Charter
+# Regras do laboratório
 
-O CYBEREXTRA existe para estudar segurança de forma controlada e ética.
+O CYBEREXTRA é usado somente em cenário controlado.
 
-## Permitido
-- cenários sintéticos;
+Pode usar:
+
+- dados inventados;
 - aplicações locais;
-- testes em ativos próprios;
-- simulação de falhas de validação;
-- análise de detecção e resposta.
+- máquinas próprias;
+- ambientes de laboratório;
+- sistemas com autorização explícita.
 
-## Proibido
-- targeting externo sem autorização;
-- coleta de credenciais reais;
-- persistência em terceiros;
-- evasão com objetivo operacional;
-- publicação de dados sensíveis.
+Não pode entrar no projeto:
+
+- credencial real;
+- cookie ou token de terceiros;
+- dado corporativo;
+- alvo externo sem autorização;
+- código criado para manter acesso em sistema de terceiros.
+
+A parte ofensiva existe apenas para entender a falha e melhorar a defesa.
